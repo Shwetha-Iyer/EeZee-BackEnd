@@ -23,10 +23,9 @@ const MAX_AGE = 1000 * 60 * 10 ; // 10min
 app.set('trust proxy',1);
 // setting up cors
 app.use(cors({
-  origin: 'https://eezee-invoice.netlify.app',
-  methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD','DELETE'],
-  credentials: true,
-  allowedHeaders: 'Content-Type, *'
+    origin: 'http://localhost:3000',
+    methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD','DELETE'],
+    credentials: true
 }));
 // setting up connect-mongodb-session store
 const mongoDBstore = new MongoDBStore({
@@ -46,9 +45,7 @@ app.use(
       store: mongoDBstore,
       cookie: {
         maxAge: MAX_AGE,
-        secure:true,
-        sameSite:"None",
-        httpOnly:true,
+        secure:false,
       }
     })
   );
